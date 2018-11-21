@@ -69,6 +69,13 @@ class App extends Component {
     reader.readAsText(file);
   }
 
+  clearData() {
+    document.getElementById('json-file-content').hidden = true;
+    document.getElementById('json-file-content').textContent = "";
+    document.getElementById('xml-file-content').hidden = true;
+    document.getElementById('xml-file-content').textContent = "";
+  }
+
   render() {
     return (
       <div className="App">
@@ -83,6 +90,9 @@ class App extends Component {
               Generate XML
           </Button>
           </div>
+          <Button id="clear-button" variant="contained" color="secondary" onClick={this.clearData}>
+            Clear
+          </Button>
         </header>
         <body>
           <div class="content-container">
