@@ -19,7 +19,7 @@ class App extends Component {
       alert(`Invalid XML: ${isValid.err.msg}`);
       return;
     }
-    
+
     let element = document.getElementById('json-file-content');
     let tObj = parser.getTraversalObj(xmlElementContent);
     let jsonObjConverted = parser.convertToJson(tObj);
@@ -40,13 +40,13 @@ class App extends Component {
       indentBy: "  ",
     });
 
-    try {      
+    try {
       element.textContent = parser.parse(JSON.parse(jsonElementContent));
       element.hidden = false;
     } catch (error) {
       alert(`Unable to generate json: ${error.message}`);
     }
-    
+
   }
 
   readFile(e) {
@@ -63,7 +63,7 @@ class App extends Component {
     let reader = new FileReader();
     reader.onload = function (e) {
       let contents = e.target.result;
-      element.hidden = false
+      element.hidden = false;
       element.textContent = contents;
     };
     reader.readAsText(file);
@@ -94,12 +94,10 @@ class App extends Component {
             Clear
           </Button>
         </header>
-        <body>
-          <div class="content-container">
-            <pre id="xml-file-content" class="file-content" hidden={true}></pre>
-            <pre id="json-file-content" class="file-content" hidden={true}></pre>
-          </div>
-        </body>
+        <div className="content-container">
+          <pre id="xml-file-content" className="file-content" hidden={true}></pre>
+          <pre id="json-file-content" className="file-content" hidden={true}></pre>
+        </div>
       </div>
     );
   }
