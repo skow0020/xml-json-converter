@@ -13,6 +13,11 @@ code {
     monospace;
 }
 
+#generate-json, #generate-xml {
+  margin: 25px;
+  display: inline-block;
+}
+
 .file-content {
   padding: 10px;
   text-align: left;
