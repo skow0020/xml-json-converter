@@ -26,6 +26,15 @@
         "import/order": [
             "off"
         ],
+        "import/no-extraneous-dependencies": [
+            "off"
+        ],
+        "import/no-named-as-default": [
+            "off"
+        ],
+        "import/prefer-default-export": [
+            "off"
+        ],
         "comma-dangle": [
             "error",
             "never"
