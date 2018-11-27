@@ -29,11 +29,3 @@ beforeEach(() => {
 afterEach(() => {
   expect(spy).not.toHaveBeenCalled();
 });
-
-const defaultMatchMedia = () => ({
-  matches: false,
-  addListener() {},
-  removeListener() {}
-});
-
-window.matchMedia = window.matchMedia || defaultMatchMedia;

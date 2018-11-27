@@ -1,0 +1,136 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App Snapshot Tests App snapshot test 1`] = `
+<div
+  className="App"
+>
+  <header
+    className="App-header"
+  >
+    <img
+      alt="logo"
+      className="App-logo"
+      src="logo.svg"
+    />
+    <label
+      className="MuiFormLabel-root-12 MuiInputLabel-root-1 MuiInputLabel-animated-9"
+      htmlFor="file-input"
+      id="file-selection"
+    >
+      <div
+        aria-label="file-selection"
+        className="MuiInputBase-root-32 MuiInput-root-19 MuiInput-underline-23"
+        onClick={[Function]}
+      >
+        <input
+          className="MuiInputBase-input-42 MuiInput-input-27 MuiInputBase-inputType-45 MuiInput-inputType-30"
+          id="file-input"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          type="file"
+        />
+      </div>
+    </label>
+    <div
+      id="container"
+    >
+      <button
+        className="MuiButtonBase-root-75 MuiButton-root-49 MuiButton-contained-60 MuiButton-containedPrimary-61 MuiButton-raised-63 MuiButton-raisedPrimary-64"
+        disabled={false}
+        id="generate-json"
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex="0"
+        type="button"
+      >
+        <span
+          className="MuiButton-label-50"
+        >
+          Generate JSON
+        </span>
+        <span
+          className="MuiTouchRipple-root-78"
+        />
+      </button>
+      <button
+        className="MuiButtonBase-root-75 MuiButton-root-49 MuiButton-contained-60 MuiButton-containedPrimary-61 MuiButton-raised-63 MuiButton-raisedPrimary-64"
+        disabled={false}
+        id="generate-xml"
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex="0"
+        type="button"
+      >
+        <span
+          className="MuiButton-label-50"
+        >
+          Generate XML
+        </span>
+        <span
+          className="MuiTouchRipple-root-78"
+        />
+      </button>
+    </div>
+    <button
+      className="MuiButtonBase-root-75 MuiButton-root-49 MuiButton-contained-60 MuiButton-containedSecondary-62 MuiButton-raised-63 MuiButton-raisedSecondary-65"
+      disabled={false}
+      id="clear-button"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex="0"
+      type="button"
+    >
+      <span
+        className="MuiButton-label-50"
+      >
+        Clear
+      </span>
+      <span
+        className="MuiTouchRipple-root-78"
+      />
+    </button>
+  </header>
+  <div
+    className="content-container"
+  >
+    <pre
+      className="file-content"
+      hidden={true}
+      id="xml-file-content"
+    />
+    <pre
+      className="file-content"
+      hidden={true}
+      id="json-file-content"
+    />
+  </div>
+</div>
+`;

@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 
 import Button from '@material-ui/core/Button';
 import Input from '@material-ui/core/Input';
+import InputLabel from '@material-ui/core/InputLabel';
 import logo from './logo.svg';
 import xmlParser from 'fast-xml-parser';
 
@@ -81,7 +82,9 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <Input id="file-input" type="file" onChange={e => this.readFile(e)} />
+          <InputLabel id="file-selection" htmlFor="file-input">
+            <Input id="file-input" type="file" aria-label="file-selection" onChange={e => this.readFile(e)} />
+          </InputLabel>
           <div id="container">
             <Button id="generate-json" variant="contained" color="primary" onClick={this.generateJSON}>
               Generate JSON
@@ -91,7 +94,7 @@ class App extends Component {
             </Button>
           </div>
           <Button id="clear-button" variant="contained" color="secondary" onClick={this.clearData}>
-            Clearasdf
+            Clear
           </Button>
         </header>
         <div className="content-container">
