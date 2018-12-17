@@ -16,9 +16,9 @@
     "test": "react-scripts test --env=jsdom",
     "test:ui": "wdio ./src/test/ui/wdio.test.conf.js",
     "test:vr": "wdio ./src/test/ui/wdio.vr.conf.js",
-    "test:accessibility": "cross-env JEST_JUNIT_OUTPUT=./src/test/test-results/junit-accessibility.xml CI=true react-scripts test --env=jsdom --testMatch **/*.accessibility.test.js",
-    "test:snapshot": "cross-env JEST_JUNIT_OUTPUT=./src/test/test-results/junit-snapshot.xml CI=true react-scripts test --env=jsdom --testMatch **/*.snapshot.test.js",
-    "test:unit": "cross-env JEST_JUNIT_OUTPUT=./src/test/test-results/junit-ut.xml CI=true react-scripts test --env=jsdom --testMatch **/*.unit.test.js",
+    "test:accessibility": "cross-env JEST_JUNIT_OUTPUT=./src/test/test-results/junit-accessibility.xml CI=true react-scripts test --env=jsdom --testMatch **/*.accessibility.test.js --reporters=./node_modules/jest-junit",
+    "test:snapshot": "cross-env JEST_JUNIT_OUTPUT=./src/test/test-results/junit-snapshot.xml CI=true react-scripts test --env=jsdom --testMatch **/*.snapshot.test.js --reporters=./node_modules/jest-junit",
+    "test:unit": "cross-env JEST_JUNIT_OUTPUT=./src/test/test-results/junit-ut.xml CI=true react-scripts test --env=jsdom --testMatch **/*.unit.test.js --reporters=./node_modules/jest-junit",
     "lint": "eslint ."
   },
   "devDependencies": {
