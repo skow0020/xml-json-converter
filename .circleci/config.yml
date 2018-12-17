@@ -41,6 +41,6 @@ jobs:
     
       # Upload test results
       - type: test-results-store
-        path: /src/test/test-results
+        path: src/test/test-results
 
 
