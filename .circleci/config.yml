@@ -38,5 +38,9 @@ jobs:
       - run: npm run test:unit
       - run: npm run test:snapshot
       - run: npm run test:accessibility
+    
+      # Upload test results
+      - type: test-results-store
+        path: /src/test/test-results
 
 
