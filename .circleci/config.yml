@@ -44,6 +44,8 @@ jobs:
         path: src/test/test-results
 
       # Deploy
+      - run: git config --global user.email "skow0020@gmail.com"
+      - run: git config --global user.name "Colin Skow"
       - run: npm run deploy
 
 
