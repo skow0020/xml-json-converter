@@ -3,16 +3,29 @@ import './App.css';
 import React, { Component } from 'react';
 
 import Button from '@material-ui/core/Button';
-import Input from '@material-ui/core/Input';
-import InputLabel from '@material-ui/core/InputLabel';
 import logo from './logo.svg';
 import xmlParser from 'fast-xml-parser';
 
 const Parser = require('fast-xml-parser').j2xParser;
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      xmlContentHidden: true,
+      jsonContentHidden: true,
+      xmlContent: '',
+      jsonContent: ''
+    };
+
+    this.clearData = this.clearData.bind(this);
+    this.generateJSON = this.generateJSON.bind(this);
+    this.generateXML = this.generateXML.bind(this);
+    this.readFile = this.readFile.bind(this);
+  }
+
   generateJSON() {
-    const xmlElementContent = document.getElementById('xml-file-content').textContent;
+    const xmlElementContent = this.state.xmlContent;
     const isValid = xmlParser.validate(xmlElementContent);
 
     if (xmlElementContent === '') {
@@ -20,17 +33,18 @@ class App extends Component {
     } else if (isValid !== true) {
       alert(`Invalid XML: ${isValid.err.msg}`);
     } else {
-      const element = document.getElementById('json-file-content');
       const tObj = xmlParser.getTraversalObj(xmlElementContent);
       const jsonObjConverted = xmlParser.convertToJson(tObj);
-      element.hidden = false;
-      element.textContent = JSON.stringify(jsonObjConverted, null, 2);
+
+      this.setState(() => ({
+        jsonContentHidden: false,
+        jsonContent: JSON.stringify(jsonObjConverted, null, 2)
+      }));
     }
   }
 
   generateXML() {
-    const jsonElementContent = document.getElementById('json-file-content').textContent;
-    const element = document.getElementById('xml-file-content');
+    const jsonElementContent = this.state.jsonContent;
 
     if (jsonElementContent === '') {
       alert('Select a json document');
@@ -43,8 +57,10 @@ class App extends Component {
     });
 
     try {
-      element.textContent = jsonParser.parse(JSON.parse(jsonElementContent));
-      element.hidden = false;
+      this.setState(() => ({
+        xmlContentHidden: false,
+        xmlContent: jsonParser.parse(JSON.parse(jsonElementContent))
+      }));
     } catch (error) {
       alert(`Unable to generate json: ${error.message}`);
     }
@@ -52,29 +68,37 @@ class App extends Component {
 
   readFile(e) {
     const file = e.target.files[0];
-    let element;
     if (!file) return;
-    if (file.type === 'application/json') element = document.getElementById('json-file-content');
-    else if (file.type === 'text/xml') element = document.getElementById('xml-file-content');
-    else {
+    if (file.type === 'application/json') {
+      const reader = new FileReader();
+      reader.onload = (g) => {
+        this.setState(() => ({
+          jsonContentHidden: false,
+          jsonContent: g.target.result
+        }));
+      };
+      reader.readAsText(file);
+    } else if (file.type === 'text/xml') {
+      const reader = new FileReader();
+      reader.onload = (g) => {
+        this.setState(() => ({
+          xmlContentHidden: false,
+          xmlContent: g.target.result
+        }));
+      };
+      reader.readAsText(file);
+    } else {
       alert('File must be xml or json');
-      return;
     }
-
-    const reader = new FileReader();
-    reader.onload = (g) => {
-      const contents = g.target.result;
-      element.hidden = false;
-      element.textContent = contents;
-    };
-    reader.readAsText(file);
   }
 
   clearData() {
-    document.getElementById('json-file-content').hidden = true;
-    document.getElementById('json-file-content').textContent = '';
-    document.getElementById('xml-file-content').hidden = true;
-    document.getElementById('xml-file-content').textContent = '';
+    this.setState(() => ({
+      xmlContentHidden: true,
+      jsonContentHidden: true,
+      xmlContent: '',
+      jsonContent: ''
+    }));
   }
 
   render() {
@@ -82,24 +106,46 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <InputLabel id="file-selection" htmlFor="file-input">
-            <Input id="file-input" type="file" aria-label="file-selection" onChange={e => this.readFile(e)} />
-          </InputLabel>
+          <label id="file-select" htmlFor="contained-button-file">
+            <input
+              style={{ display: 'none' }}
+              id="contained-button-file"
+              type="file"
+              name={this.state.inputName}
+              onChange={e => this.readFile(e)}
+            />
+            <Button variant="contained" component="span">
+              Upload
+            </Button>
+          </label>
+
           <div id="container">
-            <Button id="generate-json" variant="contained" color="primary" onClick={this.generateJSON}>
+            <Button id="generate-json" variant="contained" color="primary" onClick={() => this.generateJSON()}>
               Generate JSON
             </Button>
-            <Button id="generate-xml" variant="contained" color="primary" onClick={this.generateXML}>
+            <Button id="generate-xml" variant="contained" color="primary" onClick={() => this.generateXML()}>
               Generate XML
             </Button>
           </div>
-          <Button id="clear-button" variant="contained" color="secondary" onClick={this.clearData}>
+          <Button id="clear-button" variant="contained" color="secondary" onClick={() => this.clearData()}>
             Clear
           </Button>
         </header>
         <div className="content-container">
-          <pre id="xml-file-content" className="file-content" hidden />
-          <pre id="json-file-content" className="file-content" hidden />
+          <pre
+            id="xml-file-content"
+            className="file-content"
+            hidden={this.state.xmlContentHidden}
+          >
+            {this.state.xmlContent}
+          </pre>
+          <pre
+            id="json-file-content"
+            className="file-content"
+            hidden={this.state.jsonContentHidden}
+          >
+            {this.state.jsonContent}
+          </pre>
         </div>
       </div>
     );
