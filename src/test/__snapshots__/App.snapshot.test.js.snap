@@ -44,7 +44,7 @@ exports[`App Snapshot Tests App snapshot test 1`] = `
         <span
           className="MuiButton-label-2"
         >
-          Upload
+          Upload File
         </span>
         <span
           className="MuiTouchRipple-root-30"
@@ -130,7 +130,7 @@ exports[`App Snapshot Tests App snapshot test 1`] = `
       <span
         className="MuiButton-label-2"
       >
-        Clear
+        Clear Data
       </span>
       <span
         className="MuiTouchRipple-root-30"

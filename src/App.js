@@ -115,7 +115,7 @@ class App extends Component {
               onChange={e => this.readFile(e)}
             />
             <Button variant="contained" component="span">
-              Upload
+              Upload File
             </Button>
           </label>
 
@@ -128,7 +128,7 @@ class App extends Component {
             </Button>
           </div>
           <Button id="clear-button" variant="contained" color="secondary" onClick={() => this.clearData()}>
-            Clear
+            Clear Data
           </Button>
         </header>
         <div className="content-container">
