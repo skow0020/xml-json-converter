@@ -43,4 +43,7 @@ jobs:
       - type: test-results-store
         path: src/test/test-results
 
+      # Deploy
+      - run: npm run deploy
+
 
