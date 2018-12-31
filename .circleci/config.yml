@@ -5,6 +5,10 @@
 version: 2
 jobs:
   build:
+    branches:
+      ignore:
+        - gh-pages
+
     docker:
       # specify the version you desire here
       - image: circleci/node:8.12
@@ -44,8 +48,8 @@ jobs:
         path: src/test/test-results
 
       # Deploy
-      - run: git config --global user.email "skow0020@gmail.com"
-      - run: git config --global user.name "Colin Skow"
+      - run: git config --global user.email $GH_EMAIL
+      - run: git config --global user.name $GH_NAME
       - run: npm run deploy
 
 
