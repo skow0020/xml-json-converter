@@ -1,4 +1,4 @@
-[![Build Status](https://circleci.com/gh/skow0020/xml-json-converter/tree/master.svg?style=svg)]
+![Build Status](https://circleci.com/gh/skow0020/xml-json-converter/tree/master.svg?style=svg)
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
