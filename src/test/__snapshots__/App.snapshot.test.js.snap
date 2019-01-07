@@ -18,6 +18,7 @@ exports[`App Snapshot Tests App snapshot test 1`] = `
     >
       <input
         id="contained-button-file"
+        name="upload-button"
         onChange={[Function]}
         style={
           Object {
@@ -52,7 +53,7 @@ exports[`App Snapshot Tests App snapshot test 1`] = `
       </span>
     </label>
     <div
-      id="container"
+      id="generation-container"
     >
       <button
         className="MuiButtonBase-root-27 MuiButton-root-1 MuiButton-contained-12 MuiButton-containedPrimary-13 MuiButton-raised-15 MuiButton-raisedPrimary-16"
@@ -137,23 +138,82 @@ exports[`App Snapshot Tests App snapshot test 1`] = `
       />
     </button>
   </header>
-  <div
-    className="content-container"
+  <pre
+    className="file-content"
+    hidden={true}
+    id="xml-file-content"
   >
-    <pre
-      className="file-content"
-      hidden={true}
-      id="xml-file-content"
-    >
-      
-    </pre>
-    <pre
-      className="file-content"
-      hidden={true}
-      id="json-file-content"
-    >
-      
-    </pre>
-  </div>
+    
+  </pre>
+  <pre
+    className="file-content"
+    hidden={true}
+    id="json-file-content"
+  >
+    
+  </pre>
 </div>
+`;
+
+exports[`App Snapshot Tests ContentContainer hidden snapshot test 1`] = `
+<pre
+  className="file-content"
+  hidden={true}
+  id="xml-file-content"
+>
+  &lt;XML&gt;&lt;/XML&gt;
+</pre>
+`;
+
+exports[`App Snapshot Tests ContentContainer hidden=false snapshot test 1`] = `
+<pre
+  className="file-content"
+  hidden={false}
+  id="xml-file-content"
+>
+  &lt;XML&gt;&lt;/XML&gt;
+</pre>
+`;
+
+exports[`App Snapshot Tests UploadButton snapshot test 1`] = `
+<label
+  htmlFor="contained-button-file"
+  id="file-select"
+>
+  <input
+    id="contained-button-file"
+    name="upload-button"
+    onChange={[Function]}
+    style={
+      Object {
+        "display": "none",
+      }
+    }
+    type="file"
+  />
+  <span
+    className="MuiButtonBase-root-27 MuiButton-root-1 MuiButton-contained-12 MuiButton-raised-15"
+    onBlur={[Function]}
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseLeave={[Function]}
+    onMouseUp={[Function]}
+    onTouchEnd={[Function]}
+    onTouchMove={[Function]}
+    onTouchStart={[Function]}
+    role="button"
+    tabIndex="0"
+  >
+    <span
+      className="MuiButton-label-2"
+    >
+      Upload File
+    </span>
+    <span
+      className="MuiTouchRipple-root-30"
+    />
+  </span>
+</label>
 `;

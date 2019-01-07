@@ -1,9 +1,11 @@
-import './App.css';
+import '../App.css';
 
 import React, { Component } from 'react';
 
 import Button from '@material-ui/core/Button';
-import logo from './logo.svg';
+import ContentContainer from './ContentContainer';
+import UploadButton from './UploadButton';
+import logo from '../logo.svg';
 import xmlParser from 'fast-xml-parser';
 
 const Parser = require('fast-xml-parser').j2xParser;
@@ -106,47 +108,25 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <label id="file-select" htmlFor="contained-button-file">
-            <input
-              style={{ display: 'none' }}
-              id="contained-button-file"
-              type="file"
-              name={this.state.inputName}
-              onChange={e => this.readFile(e)}
-            />
-            <Button variant="contained" component="span">
-              Upload File
-            </Button>
-          </label>
-
-          <div id="container">
-            <Button id="generate-json" variant="contained" color="primary" onClick={() => this.generateJSON()}>
-              Generate JSON
-            </Button>
-            <Button id="generate-xml" variant="contained" color="primary" onClick={() => this.generateXML()}>
-              Generate XML
-            </Button>
+          <UploadButton id="contained-button-file" className="upload-button" onChange={e => this.readFile(e)} />
+          <div id="generation-container">
+            <Button id="generate-json" variant="contained" color="primary" onClick={() => this.generateJSON()}>Generate JSON</Button>
+            <Button id="generate-xml" variant="contained" color="primary" onClick={() => this.generateXML()}>Generate XML</Button>
           </div>
-          <Button id="clear-button" variant="contained" color="secondary" onClick={() => this.clearData()}>
-            Clear Data
-          </Button>
+          <Button id="clear-button" variant="contained" color="secondary" onClick={() => this.clearData()}>Clear Data</Button>
         </header>
-        <div className="content-container">
-          <pre
-            id="xml-file-content"
-            className="file-content"
-            hidden={this.state.xmlContentHidden}
-          >
-            {this.state.xmlContent}
-          </pre>
-          <pre
-            id="json-file-content"
-            className="file-content"
-            hidden={this.state.jsonContentHidden}
-          >
-            {this.state.jsonContent}
-          </pre>
-        </div>
+        <ContentContainer
+          id="xml-file-content"
+          className="file-content"
+          hidden={this.state.xmlContentHidden}
+          content={this.state.xmlContent}
+        />
+        <ContentContainer
+          id="json-file-content"
+          className="file-content"
+          hidden={this.state.jsonContentHidden}
+          content={this.state.jsonContent}
+        />
       </div>
     );
   }
