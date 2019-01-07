@@ -1,4 +1,4 @@
-import App from '../App';
+import App from '../components/App';
 import React from 'react';
 import snapshotRenderer from 'react-test-renderer';
 

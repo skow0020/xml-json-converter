@@ -1,9 +1,9 @@
-import './App.css';
+import '../App.css';
 
 import React, { Component } from 'react';
 
 import Button from '@material-ui/core/Button';
-import logo from './logo.svg';
+import logo from '../logo.svg';
 import xmlParser from 'fast-xml-parser';
 
 const Parser = require('fast-xml-parser').j2xParser;

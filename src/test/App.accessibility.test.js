@@ -1,4 +1,4 @@
-import App from '../App';
+import App from '../components/App';
 import React from 'react';
 import { axe } from '../setupTests';
 import { shallow } from 'enzyme';
