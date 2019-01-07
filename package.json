@@ -52,7 +52,7 @@
       "!src/serviceWorker.js",
       "!src/index.js",
       "!src/setupTests.js",
-      "!*.test.js"
+      "!src/test/*"
     ],
     "coverageThreshold": {
       "global": {
