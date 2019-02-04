@@ -1,8 +1,10 @@
+import SimpleSnackbar, { openSnackbar } from '../components/SimpleSnackbar';
+import { mount, shallow } from 'enzyme';
+
 import App from '../components/App';
 import ContentContainer from '../components/ContentContainer';
 import React from 'react';
 import UploadButton from '../components/UploadButton';
-import { shallow } from 'enzyme';
 
 describe('Unit Testing', () => {
   it('App renders without crashing', () => {
@@ -41,5 +43,25 @@ describe('Unit Testing', () => {
   it('UploadButton renders without crashing', () => {
     const wrapper = shallow(<UploadButton id="contained-button-file" className="upload-button" onChange={() => { }} />);
     expect(wrapper.length).toBe(1);
+  });
+
+  it('SimpleSnackbar renders without crashing', () => {
+    const wrapper = mount(<SimpleSnackbar />);
+    openSnackbar({ message: 'THIS IS A MESSAGE' });
+
+    wrapper.setState({
+      open: true,
+      message: 'THIS IS A MESSAGE'
+    });
+
+    expect(wrapper.length).toBe(1);
+    expect(wrapper.html()).toContain('THIS IS A MESSAGE');
+  });
+
+  it('SimpleSnackbar renders closed without crashing', () => {
+    const wrapper = mount(<SimpleSnackbar open={false} message="THIS IS A MESSAGE" />);
+
+    expect(wrapper.length).toBe(1);
+    expect(wrapper.html()).not.toContain('THIS IS A MESSAGE');
   });
 });

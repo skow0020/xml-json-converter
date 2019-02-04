@@ -12,146 +12,53 @@ exports[`App Snapshot Tests App snapshot test 1`] = `
       className="App-logo"
       src="logo.svg"
     />
-    <label
-      htmlFor="contained-button-file"
-      id="file-select"
-    >
-      <input
-        id="contained-button-file"
-        name="upload-button"
-        onChange={[Function]}
-        style={
-          Object {
-            "display": "none",
-          }
-        }
-        type="file"
-      />
-      <span
-        className="MuiButtonBase-root-27 MuiButton-root-1 MuiButton-contained-12 MuiButton-raised-15"
-        onBlur={[Function]}
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onKeyUp={[Function]}
-        onMouseDown={[Function]}
-        onMouseLeave={[Function]}
-        onMouseUp={[Function]}
-        onTouchEnd={[Function]}
-        onTouchMove={[Function]}
-        onTouchStart={[Function]}
-        role="button"
-        tabIndex="0"
-      >
-        <span
-          className="MuiButton-label-2"
-        >
-          Upload File
-        </span>
-        <span
-          className="MuiTouchRipple-root-30"
-        />
-      </span>
-    </label>
+    <UploadButton
+      className="upload-button"
+      id="contained-button-file"
+      onChange={[Function]}
+    />
     <div
       id="generation-container"
     >
-      <button
-        className="MuiButtonBase-root-27 MuiButton-root-1 MuiButton-contained-12 MuiButton-containedPrimary-13 MuiButton-raised-15 MuiButton-raisedPrimary-16"
-        disabled={false}
+      <WithStyles(Button)
+        color="primary"
         id="generate-json"
-        onBlur={[Function]}
         onClick={[Function]}
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onKeyUp={[Function]}
-        onMouseDown={[Function]}
-        onMouseLeave={[Function]}
-        onMouseUp={[Function]}
-        onTouchEnd={[Function]}
-        onTouchMove={[Function]}
-        onTouchStart={[Function]}
-        tabIndex="0"
-        type="button"
+        variant="contained"
       >
-        <span
-          className="MuiButton-label-2"
-        >
-          Generate JSON
-        </span>
-        <span
-          className="MuiTouchRipple-root-30"
-        />
-      </button>
-      <button
-        className="MuiButtonBase-root-27 MuiButton-root-1 MuiButton-contained-12 MuiButton-containedPrimary-13 MuiButton-raised-15 MuiButton-raisedPrimary-16"
-        disabled={false}
+        Generate JSON
+      </WithStyles(Button)>
+      <WithStyles(Button)
+        color="primary"
         id="generate-xml"
-        onBlur={[Function]}
         onClick={[Function]}
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onKeyUp={[Function]}
-        onMouseDown={[Function]}
-        onMouseLeave={[Function]}
-        onMouseUp={[Function]}
-        onTouchEnd={[Function]}
-        onTouchMove={[Function]}
-        onTouchStart={[Function]}
-        tabIndex="0"
-        type="button"
+        variant="contained"
       >
-        <span
-          className="MuiButton-label-2"
-        >
-          Generate XML
-        </span>
-        <span
-          className="MuiTouchRipple-root-30"
-        />
-      </button>
+        Generate XML
+      </WithStyles(Button)>
     </div>
-    <button
-      className="MuiButtonBase-root-27 MuiButton-root-1 MuiButton-contained-12 MuiButton-containedSecondary-14 MuiButton-raised-15 MuiButton-raisedSecondary-17"
-      disabled={false}
+    <WithStyles(Button)
+      color="secondary"
       id="clear-button"
-      onBlur={[Function]}
       onClick={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      onTouchEnd={[Function]}
-      onTouchMove={[Function]}
-      onTouchStart={[Function]}
-      tabIndex="0"
-      type="button"
+      variant="contained"
     >
-      <span
-        className="MuiButton-label-2"
-      >
-        Clear Data
-      </span>
-      <span
-        className="MuiTouchRipple-root-30"
-      />
-    </button>
+      Clear Data
+    </WithStyles(Button)>
   </header>
-  <pre
+  <WithStyles(SimpleSnackbar) />
+  <ContentContainer
     className="file-content"
+    content=""
     hidden={true}
     id="xml-file-content"
-  >
-    
-  </pre>
-  <pre
+  />
+  <ContentContainer
     className="file-content"
+    content=""
     hidden={true}
     id="json-file-content"
-  >
-    
-  </pre>
+  />
 </div>
 `;
 
@@ -175,6 +82,18 @@ exports[`App Snapshot Tests ContentContainer hidden=false snapshot test 1`] = `
 </pre>
 `;
 
+exports[`App Snapshot Tests SimpleSnackbar snapshot test 1`] = `
+<SimpleSnackbar
+  classes={
+    Object {
+      "close": "SimpleSnackbar-close-1",
+    }
+  }
+  message="THIS IS A MESSAGE"
+  open={true}
+/>
+`;
+
 exports[`App Snapshot Tests UploadButton snapshot test 1`] = `
 <label
   htmlFor="contained-button-file"
@@ -191,29 +110,11 @@ exports[`App Snapshot Tests UploadButton snapshot test 1`] = `
     }
     type="file"
   />
-  <span
-    className="MuiButtonBase-root-27 MuiButton-root-1 MuiButton-contained-12 MuiButton-raised-15"
-    onBlur={[Function]}
-    onFocus={[Function]}
-    onKeyDown={[Function]}
-    onKeyUp={[Function]}
-    onMouseDown={[Function]}
-    onMouseLeave={[Function]}
-    onMouseUp={[Function]}
-    onTouchEnd={[Function]}
-    onTouchMove={[Function]}
-    onTouchStart={[Function]}
-    role="button"
-    tabIndex="0"
+  <WithStyles(Button)
+    component="span"
+    variant="contained"
   >
-    <span
-      className="MuiButton-label-2"
-    >
-      Upload File
-    </span>
-    <span
-      className="MuiTouchRipple-root-30"
-    />
-  </span>
+    Upload File
+  </WithStyles(Button)>
 </label>
 `;
