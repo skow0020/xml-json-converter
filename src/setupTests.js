@@ -17,15 +17,3 @@ export const axe = configureAxe({
     values: ['wcag2a', 'wcag2aa']
   }
 });
-
-let spy;
-beforeEach(() => {
-  if (spy) {
-    spy.mockReset();
-  }
-  spy = jest.spyOn(global.console, 'error');
-});
-
-afterEach(() => {
-  expect(spy).not.toHaveBeenCalled();
-});

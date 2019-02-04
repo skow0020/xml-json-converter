@@ -1,20 +1,22 @@
 import App from '../components/App';
 import ContentContainer from '../components/ContentContainer';
 import React from 'react';
+import SimpleSnackbar from '../components/SimpleSnackbar';
 import UploadButton from '../components/UploadButton';
-import snapshotRenderer from 'react-test-renderer';
+import { shallow } from 'enzyme';
+import toJson from 'enzyme-to-json';
 
 describe('App Snapshot Tests', () => {
   it('App snapshot test', async () => {
-    const wrapper = snapshotRenderer.create(
+    const wrapper = shallow(
       <App />
     );
-    const component = wrapper.toJSON();
-    expect(component).toMatchSnapshot();
+
+    expect(toJson(wrapper)).toMatchSnapshot();
   });
 
   it('ContentContainer hidden snapshot test', async () => {
-    const wrapper = snapshotRenderer.create(
+    const wrapper = shallow(
       <ContentContainer
         id="xml-file-content"
         className="file-content"
@@ -22,12 +24,12 @@ describe('App Snapshot Tests', () => {
         content="<XML></XML>"
       />
     );
-    const component = wrapper.toJSON();
-    expect(component).toMatchSnapshot();
+
+    expect(toJson(wrapper)).toMatchSnapshot();
   });
 
   it('ContentContainer hidden=false snapshot test', async () => {
-    const wrapper = snapshotRenderer.create(
+    const wrapper = shallow(
       <ContentContainer
         id="xml-file-content"
         className="file-content"
@@ -35,15 +37,24 @@ describe('App Snapshot Tests', () => {
         content="<XML></XML>"
       />
     );
-    const component = wrapper.toJSON();
-    expect(component).toMatchSnapshot();
+
+    expect(toJson(wrapper)).toMatchSnapshot();
   });
 
   it('UploadButton snapshot test', async () => {
-    const wrapper = snapshotRenderer.create(
+    const wrapper = shallow(
       <UploadButton id="contained-button-file" className="upload-button" onChange={() => { }} />
     );
-    const component = wrapper.toJSON();
-    expect(component).toMatchSnapshot();
+
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
+
+  it('SimpleSnackbar snapshot test', () => {
+    const wrapper = shallow(<SimpleSnackbar open message="THIS IS A MESSAGE" />);
+    wrapper.setState({
+      open: true
+    });
+
+    expect(toJson(wrapper)).toMatchSnapshot();
   });
 });

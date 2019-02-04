@@ -1,6 +1,7 @@
 import '../App.css';
 
 import React, { Component } from 'react';
+import SimpleSnackbar, { openSnackbar } from './SimpleSnackbar';
 
 import Button from '@material-ui/core/Button';
 import ContentContainer from './ContentContainer';
@@ -26,14 +27,18 @@ class App extends Component {
     this.readFile = this.readFile.bind(this);
   }
 
+  showNotifier = (message) => {
+    openSnackbar({ message });
+  }
+
   generateJSON() {
     const xmlElementContent = this.state.xmlContent;
     const isValid = xmlParser.validate(xmlElementContent);
 
     if (xmlElementContent === '') {
-      alert('Select an xml document');
+      this.showNotifier('Select an XML document');
     } else if (isValid !== true) {
-      alert(`Invalid XML: ${isValid.err.msg}`);
+      this.showNotifier(`Invalid XML: ${isValid.err.msg}`);
     } else {
       const tObj = xmlParser.getTraversalObj(xmlElementContent);
       const jsonObjConverted = xmlParser.convertToJson(tObj);
@@ -49,7 +54,7 @@ class App extends Component {
     const jsonElementContent = this.state.jsonContent;
 
     if (jsonElementContent === '') {
-      alert('Select a json document');
+      this.showNotifier('Select a JSON Document');
       return;
     }
 
@@ -64,7 +69,7 @@ class App extends Component {
         xmlContent: jsonParser.parse(JSON.parse(jsonElementContent))
       }));
     } catch (error) {
-      alert(`Unable to generate json: ${error.message}`);
+      this.showNotifier(`Unable to generate json: ${error.message}`);
     }
   }
 
@@ -90,7 +95,7 @@ class App extends Component {
       };
       reader.readAsText(file);
     } else {
-      alert('File must be xml or json');
+      this.showNotifier('File must be xml or json');
     }
   }
 
@@ -115,6 +120,7 @@ class App extends Component {
           </div>
           <Button id="clear-button" variant="contained" color="secondary" onClick={() => this.clearData()}>Clear Data</Button>
         </header>
+        <SimpleSnackbar />
         <ContentContainer
           id="xml-file-content"
           className="file-content"
