@@ -18,8 +18,21 @@ steps:
 - script: |
     npm install
     npm run lint
+  displayName: 'npm lint'
+
+- script: |
     npm run test:unit
     npm run test:snapshot
     npm run test:accessibility 
     npm run build
-  displayName: 'npm install and build'
+  displayName: 'npm test'
+
+- script: |
+    npm run build
+  displayName: 'npm build'
+
+- task: PublishTestResults@2
+  condition: succeededOrFailed()
+  inputs:
+    testRunner: JUnit
+    testResultsFiles: 'src/test/test-results/*.xml'
