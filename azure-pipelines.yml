@@ -5,6 +5,11 @@
 
 trigger:
 - master
+- azure-pipeline-example
+
+pr:
+- master
+- releases/*
 
 pool:
   vmImage: 'Ubuntu-16.04'
