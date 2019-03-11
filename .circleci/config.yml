@@ -5,6 +5,9 @@
 version: 2
 jobs:
   build:
+    branches:
+      ignore:
+        - gh-pages
     docker:
       # specify the version you desire here
       - image: circleci/node:8.12
@@ -15,6 +18,10 @@ jobs:
       # - image: circleci/mongo:3.4.4
 
     working_directory: ~/repo
+
+    environment:
+      - SOURCE_BRANCH: master
+      - TARGET_BRANCH: gh-pages
 
     steps:
       - checkout
@@ -44,11 +51,11 @@ jobs:
         path: src/test/test-results
 
       - deploy:
-          name: Deploy to github pages
+          name: Deploy
           command: |
-            if [ "${CIRCLE_BRANCH}" = "master" ]; then
-              git config --global user.email $GH_EMAIL \
-              git config --global user.name $GH_NAME \
+            if [ $CIRCLE_BRANCH == $SOURCE_BRANCH ]; then
+              git config --global user.email $GH_EMAIL
+              git config --global user.name $GH_NAME
               npm run deploy
             else
               echo "Not master branch, dry run only"
